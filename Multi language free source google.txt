@@ -1,0 +1,83 @@
+Multi language free script components
+
+<style>
+
+body>.skiptranslate {
+      display: none;
+    }
+
+    .goog-te-banner-frame.skiptranslate {
+      display: none !important;
+    }
+
+    body {
+      top: 0px !important;
+    }
+
+    @media print {
+      #google_translate_element {
+        display: none;
+      }
+    }
+	
+</style>
+
+
+code for JXS components
+
+const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: "en",
+        autoDisplay: false
+      },
+      "google_translate_element"
+    );
+  };
+  useEffect(() => {
+    var addScript = document.createElement("script");
+    addScript.setAttribute(
+      "src",
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    );
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+  
+  
+  <div id="google_translate_element"></div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  for html file 
+  
+  
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          layout: window.google.translate.TranslateElement.InlineLayout.VERTICAL,
+          autoDisplay: false,
+          multilanguagePage: false,
+          // layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        },
+        'edwapp'
+      );
+    }
+  </script>
+  
