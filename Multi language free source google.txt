@@ -14,10 +14,25 @@ body>.skiptranslate {
       top: 0px !important;
     }
 
+	.skiptranslate {
+      display: none;
+    } 
     @media print {
       #google_translate_element {
         display: none;
       }
+    }
+	 div#goog-gt-tt {
+      display: none !important;
+    }
+
+    div#goog-gt-tt:hover {
+      display: none !important;
+    }
+
+    .goog-text-highlight {
+      background-color: transparent !important;
+      box-shadow: none !important;
     }
 	
 </style>
@@ -49,7 +64,34 @@ const googleTranslateElementInit = () => {
   
   
   
-  
+  .lanuage-wrap {
+      margin-top: 8px;
+      #google_translate_element {
+        .skiptranslate {
+          &.goog-te-gadget {
+            // background-color: #f1f1f1;
+            .goog-te-combo {
+              width: 100%;
+              border: 1px solid rgba(32, 32, 32, 0.2);
+              padding: 6px 10px;
+              display: inline-flex;
+              align-items: center;
+              height: 32px;
+              border-radius: 4px;
+              cursor: pointer;
+              background-color: transparent;
+              color: #202020;
+              font-weight: 400;
+              text-transform: capitalize;
+              z-index: 1;
+              text-align: left;
+              font-size: 12px;
+              justify-content: space-between;
+            }
+          }
+        }
+      }
+    }
   
   
   
@@ -81,3 +123,50 @@ const googleTranslateElementInit = () => {
     }
   </script>
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  import React, { useEffect } from 'react';
+
+const MultiLanguage = () => {
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: "en",
+        autoDisplay: false
+      },
+      "google_translate_element"
+    );
+  };
+  useEffect(() => {
+    var addScript = document.createElement("script");
+    addScript.setAttribute(
+      "src",
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    );
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, [])
+
+
+  return (
+    <div id='google_translate_element'></div>
+  )
+}
+
+export default MultiLanguage
+
+<MultiLanguage />
